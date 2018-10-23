@@ -1,30 +1,58 @@
 import { createStore } from "redux";
 
-const increment = (payload = {}) => ({
+const increment = ({ incrementBy = 1 } = {}) => ({
   type: "INCREMENT",
-  incrementBy: typeof payload.incrementBy === "number" ? payload.incrementBy : 1
+  incrementBy: typeof incrementBy === "number" ? incrementBy : 1
 });
 
-const store = createStore((state = { count: 0 }, action) => {
+const decrement = ({ decrementBy = 1 } = {}) => {
+  return {
+    type: "DECREMENT",
+    decrementBy: typeof decrementBy === "number" ? decrementBy : 1
+  }
+}
+
+const reset = () => {
+  return {
+    type: "RESET"
+  }
+}
+
+const set = ({ setBy } = {}) => {
+  return {
+    type: "SET",
+    setBy: typeof setBy === "number" ? setBy : 0
+  }
+}
+
+// Reducers
+// 1. Reducers is a pure fonctions
+// 2. Never change state or action
+
+
+const countReducer = (state = { count: 0 }, action) => {
   switch (action.type) {
     case "INCREMENT":
-      const incrementBy =
-        typeof action.incrementBy === "number" ? action.incrementBy : 1;
-      return { count: state.count + incrementBy };
+      return { count: state.count + action.incrementBy };
     case "DECREMENT":
-      const decrementBy =
-        typeof action.decrementBy === "number" ? action.decrementBy : 1;
-      return { count: state.count - decrementBy };
+      return { count: state.count - action.decrementBy };
     case "RESET":
       return { count: 0 };
+    case "SET":
+      return { count: action.setBy }
     default:
       return state;
   }
-});
+}
+
+const store = createStore(countReducer);
 
 const unsubscribe = store.subscribe(() => {
   console.log(store.getState());
 });
+//
+// unsubscribe();
+
 
 store.dispatch(
   increment({
@@ -32,12 +60,14 @@ store.dispatch(
   })
 );
 
-// unsubscribe();
+store.dispatch(increment({ incrementBy: "coucou" }));
 
-store.dispatch(increment());
-store.dispatch({
-  type: "RESET"
-});
-store.dispatch({
-  type: "DECREMENT"
-});
+store.dispatch(reset());
+
+store.dispatch(decrement({
+  decrementBy: 10
+}));
+
+store.dispatch(set({
+  setBy: 10
+}));
