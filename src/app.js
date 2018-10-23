@@ -2,5 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
+import Route from "./routers/AppRouter.js";
 
-ReactDOM.render(<p>THIS IS MY BOILERPLATE</p>, document.getElementById("root"));
+ReactDOM.render(Route, document.getElementById("root"));
