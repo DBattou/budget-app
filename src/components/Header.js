@@ -11,8 +11,8 @@ const Header = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/coucou" activeClassName="is-active">
-          Go coucou
+        <NavLink to="/expenses" activeClassName="is-active">
+          Go expenses
         </NavLink>
       </li>
       <li>
