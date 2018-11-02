@@ -7,22 +7,17 @@ const Header = () => (
     <ul>
       <li>
         <NavLink to="/" activeClassName="is-active" exact={true}>
-          Go home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/expenses" activeClassName="is-active">
-          Go expenses
+          Dashboard
         </NavLink>
       </li>
       <li>
         <NavLink to="/help" activeClassName="is-active">
-          Go help
+          Help page
         </NavLink>
       </li>
       <li>
-        <NavLink to="/edit" activeClassName="is-active">
-          Go edit
+        <NavLink to="/add" activeClassName="is-active">
+          Add expense
         </NavLink>
       </li>
     </ul>

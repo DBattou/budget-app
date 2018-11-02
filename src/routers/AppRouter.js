@@ -4,6 +4,7 @@ import Header from "../components/Header.js";
 import NotFound from "../components/NotFound.js";
 import HelpPage from "../components/HelpPage.js";
 import EditPage from "../components/EditPage.js";
+import AddExpense from "../components/AddExpense.js";
 import ExpenseDashboardPage from "../components/ExpenseDashboard.js";
 
 const Routes = () => {
@@ -12,10 +13,11 @@ const Routes = () => {
       <div>
         <Header />
         <Switch>
-          <Route path="/" component={ExpenseDashboardPage} exact={true} />
-          <Route path="/expenses" component={ExpenseDashboardPage} />
+          <Route path="/" exact={true} component={ExpenseDashboardPage} />
+          {/* <Route path="/dashboard" /> */}
           <Route path="/help" component={HelpPage} />
-          <Route path="/edit" component={EditPage} />
+          <Route path="/edit/:id" component={EditPage} />
+          <Route path="/add" component={AddExpense} />
           <Route component={NotFound} />
         </Switch>
       </div>
