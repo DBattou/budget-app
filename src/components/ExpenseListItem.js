@@ -28,7 +28,15 @@ const ExpenseListItem = props => (
       <span>{props.description}</span>
     </Link>
     <p>{numeral(props.amount).format("$0,0.00")}</p>
+<<<<<<< HEAD
     <p>{moment(props.createdAt).format("Do MMMM, YYYY")}</p>
+=======
+    <p>
+      {moment(props.createdAt)
+        .locale("fr")
+        .format("Do MMMM, YYYY")}
+    </p>
+>>>>>>> 6f2cb63be96192d70a282ea45b6f765bb94935c8
   </div>
 );
 
