@@ -1,13 +1,14 @@
 {
   "name": "expensify",
+  "description": "really cool app",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
   "engines": {
     "node": "10.2.1",
     "npm": "5.6.0",
     "yarn": "1.10.1"
   },
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "serve": "live-server public",
     "build:dev": "webpack",
@@ -29,6 +30,7 @@
     "css-loader": "^1.0.0",
     "express": "^4.16.4",
     "jest": "^23.6.0",
+    "mini-css-extract-plugin": "^0.4.4",
     "moment": "^2.22.2",
     "node-sass": "^4.9.4",
     "normalize.css": "^8.0.0",
