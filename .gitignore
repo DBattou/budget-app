@@ -2,11 +2,9 @@ node_modules
 yarn-error.log
 package-lock.json
 .DS_Store
-<<<<<<< HEAD
 public/.DS_Store
 yarn.lock
-=======
-yarn-error.log
-package-lock.json
-yarn.lock
->>>>>>> 9b613a111c1760065c5933588e6398bf8d908d5e
+public/bundle.js
+public/bundle.js.map
+public/styles.css
+public/styles.css.map

@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import "normalize.css/normalize.css";
-import "./styles/styles.scss";
 import Routes from "./routers/AppRouter.js";
 import store from "./store/configureStore.js";
 import { addExpense, removeExpense, editExpense } from "./actions/expenses.js";
 import { setTextFilter, sortByDate, setEndDate } from "./actions/filters.js";
 import getVisibleExpenses from "./selectors/expenses.js";
+import "normalize.css/normalize.css";
+import "./styles/styles.scss";
+import "react-dates/lib/css/_datepicker.css";
+import "react-dates/initialize";
 
 store.dispatch(
   addExpense({
