@@ -1,25 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import numeral from "numeral";
-numeral.register("locale", "fr", {
-  delimiters: {
-    thousands: " ",
-    decimal: ","
-  },
-  abbreviations: {
-    thousand: "k",
-    million: "m",
-    billion: "b",
-    trillion: "t"
-  },
-  ordinal: function(number) {
-    return number === 1 ? "er" : "ème";
-  },
-  currency: {
-    symbol: "€"
-  }
-});
+import numeral from "numeral"
+
 numeral.locale("fr");
 
 const ExpenseListItem = props => (

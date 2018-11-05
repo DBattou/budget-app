@@ -10,6 +10,26 @@ import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
+import numeral from "numeral";
+
+numeral.register("locale", "fr", {
+  delimiters: {
+    thousands: " ",
+    decimal: ","
+  },
+  abbreviations: {
+    thousand: "k",
+    million: "m",
+    billion: "b",
+    trillion: "t"
+  },
+  ordinal: function (number) {
+    return number === 1 ? "er" : "ème";
+  },
+  currency: {
+    symbol: "€"
+  }
+});
 
 store.dispatch(
   addExpense({
@@ -36,7 +56,7 @@ let test = store.dispatch(
   })
 );
 
-store.dispatch(editExpense({ id: test.id, description: "Enculé " }));
+// store.dispatch(editExpense({ id: test.id, description: "Enculé " }));
 
 // store.dispatch(setTextFilter("bill"));
 
@@ -44,6 +64,11 @@ store.dispatch(editExpense({ id: test.id, description: "Enculé " }));
 // const expenses = store.getState().expenses;
 
 // console.log(getVisibleExpenses(expenses, filters));
+
+console.log("----------------------");
+console.log(store.getState().filters);
+console.log("----------------------");
+
 
 const App = () => {
   return (
