@@ -1,34 +1,54 @@
 {
   "name": "expensify",
+  "description": "really cool app",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.2.1",
+    "npm": "5.6.0",
+    "yarn": "1.10.1"
+  },
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "server": "live-server public",
-    "build": "webpack --watch",
-    "dev-server": "webpack-dev-server"
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
+    "dev-server": "webpack-dev-server",
+    "start": "node server/server.js",
+    "test": "jest",
+    "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^1.0.0",
+    "express": "^4.16.4",
+    "mini-css-extract-plugin": "^0.4.4",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.4",
     "normalize.css": "^8.0.0",
+    "numeral": "^2.0.6",
     "react": "^16.5.2",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-dates": "^18.2.0",
     "react-dom": "^16.5.2",
     "react-modal": "^3.6.1",
+    "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "uuid": "^3.3.2",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-cli": "^3.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "webpack-dev-server": "^3.1.9"
+  }
 }
