@@ -36,7 +36,7 @@ store.dispatch(
     description: "Sandwich",
     note: "",
     amount: 15,
-    createdAt: 2000000
+    createdAt: 1541026800000
   })
 );
 store.dispatch(
@@ -44,7 +44,7 @@ store.dispatch(
     description: "Gaz bill",
     note: "",
     amount: 1500,
-    createdAt: 1000000
+    createdAt: 1541199600000
   })
 );
 let test = store.dispatch(
@@ -52,23 +52,9 @@ let test = store.dispatch(
     description: "Water bill",
     note: "",
     amount: 2500,
-    createdAt: 10000000
+    createdAt: 1541113200000
   })
 );
-
-// store.dispatch(editExpense({ id: test.id, description: "Enculé " }));
-
-// store.dispatch(setTextFilter("bill"));
-
-// const filters = store.getState().filters;
-// const expenses = store.getState().expenses;
-
-// console.log(getVisibleExpenses(expenses, filters));
-
-console.log("----------------------");
-console.log(store.getState().filters);
-console.log("----------------------");
-
 
 const App = () => {
   return (
