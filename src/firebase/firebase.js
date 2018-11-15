@@ -13,46 +13,75 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-// // Firebase does not work with array (it auto gives a ID=index of the array 1, 2, 3...)
-// const notes = [{
-//   id: "identifier1",
-//   title: "First model",
-//   body: "This my note"
-// }, {
-//   id: "identifier2",
-//   title: "Second model",
-//   body: "This my super mega note"
-// }]
-// database.ref("notes").set(notes)
+// Initial datas
+//var expenseListRef = firebase.database().ref('expense_list');
+//var newMessageRef = expenseListRef.push({
+// expenseListRef.push({
+//   description: "Sandwich",
+//   note: "",
+//   amount: 1589,
+//   createdAt: 1541026800000
+// });
 
+// expenseListRef.push({
+//   description: "Condom",
+//   note: "",
+//   amount: 476,
+//   createdAt: 1541026800000
+// });
 
-// // Array structure we want to store :
-// const firebaseNotes = {
-//   notes: {
-//     identifier1: {
-//       title: "First model",
-//       body: "This my note"
-//     },
-//     identifier2: {
-//       title: "Second model",
-//       body: "This my super mega note"
-//     }
-//   }
-// }
+// expenseListRef.push({
+//   description: "RDR2",
+//   note: "",
+//   amount: 234,
+//   createdAt: 1541026800000
+// });
 
-// We can use push()
-const reference = database.ref("notes").push({
-  title: "First model",
-  body: "This my note"
+/*
+// Creating an array using once()
+database.ref("expense_list").once("value").then((snapshot) => {
+  // console.log(snapshot.val())
+  const expenses = [];
+
+  snapshot.forEach((childSnapshot) => {
+    expenses.push({
+      id: childSnapshot.key,
+      ...childSnapshot.val()
+    })
+  })
+})
+*/
+
+/*
+// Creating an array on data changes. 
+// ==> Immutability: should return a brand new array each time data has changed
+database.ref("expense_list").on("value", (snapshot) => {
+  const expenses = [];
+
+  snapshot.forEach((childSnapshot) => {
+    expenses.push({
+      id: childSnapshot.key,
+      ...childSnapshot.val()
+    })
+  })
+
+  console.log(expenses)
+  return expenses;
+})
+*/
+
+// Useful methods : on child removed
+database.ref("expense_list").on("child_removed", (snapshot) => {
+  console.log("child removed", snapshot.key, snapshot.val())
 })
 
-database.ref("notes").push({
-  title: "Second model",
-  body: "This my super mega note"
+// Useful methods : on child changed
+database.ref("expense_list").on("child_changed", (snapshot) => {
+  console.log("child changed", snapshot.key, snapshot.val())
 })
 
-console.log(reference.toString());
 
-reference.set({ "dentifirce": "1235dollars" })
-
-database.ref("notes/-LRMUsgTdJyyKTjCZa7k").remove()
+// We've appended a new message to the message_list location.
+// var path = newMessageRef.toString();
+// path will be something like
+// 'https://sample-app.firebaseio.com/message_list/-IKo28nwJLH0Nc5XeFmj'
