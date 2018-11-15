@@ -13,61 +13,46 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-const onDataChange = (snapshot) => {
-  console.log("Update");
-  console.log(snapshot.val());
-}
-
-database
-  .ref()
-  .on("value", onDataChange, (e) => {
-    console.log("Error occured while fetching data", e)
-  });
-
-// .then(snapshot => {
-//   console.log("Data success");
-// });
-
-setTimeout(() => {
-  //change the data
-  database.ref().update({
-    "location/ville": "Villenneuhs"
-  })
-}, 3000)
-
-setTimeout(() => {
-  //change the data
-  database.ref().off("value", onDataChange)
-}, 8000)
-
-setTimeout(() => {
-  //change the data
-  database.ref().update({
-    "location/ville": "Villennes"
-  })
-}, 13000)
+// // Firebase does not work with array (it auto gives a ID=index of the array 1, 2, 3...)
+// const notes = [{
+//   id: "identifier1",
+//   title: "First model",
+//   body: "This my note"
+// }, {
+//   id: "identifier2",
+//   title: "Second model",
+//   body: "This my super mega note"
+// }]
+// database.ref("notes").set(notes)
 
 
-// database
-//   .ref()
-//   .set({
-//     name: "Battou",
-//     age: 36,
-//     isSingle: false,
-//     location: {
-//       city: "Paris",
-//       country: "Franceodf"
+// // Array structure we want to store :
+// const firebaseNotes = {
+//   notes: {
+//     identifier1: {
+//       title: "First model",
+//       body: "This my note"
+//     },
+//     identifier2: {
+//       title: "Second model",
+//       body: "This my super mega note"
 //     }
-//   })
-//   .then(result => {
-//     console.log("yes its works perfectly");
-//     console.log(result);
-//   })
-//   .catch(error => {
-//     console.log("merde ça n'a pas marché");
-//     console.log(error);
-//   });
+//   }
+// }
 
-// database.ref().update({
-//   "location/city": "Villennes sur seine"
-// });
+// We can use push()
+const reference = database.ref("notes").push({
+  title: "First model",
+  body: "This my note"
+})
+
+database.ref("notes").push({
+  title: "Second model",
+  body: "This my super mega note"
+})
+
+console.log(reference.toString());
+
+reference.set({ "dentifirce": "1235dollars" })
+
+database.ref("notes/-LRMUsgTdJyyKTjCZa7k").remove()
