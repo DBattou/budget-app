@@ -13,12 +13,40 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+const onDataChange = (snapshot) => {
+  console.log("Update");
+  console.log(snapshot.val());
+}
+
 database
   .ref()
-  .once("value")
-  .then(snapshot => {
-    console.log(snapshot);
+  .on("value", onDataChange, (e) => {
+    console.log("Error occured while fetching data", e)
   });
+
+// .then(snapshot => {
+//   console.log("Data success");
+// });
+
+setTimeout(() => {
+  //change the data
+  database.ref().update({
+    "location/ville": "Villenneuhs"
+  })
+}, 3000)
+
+setTimeout(() => {
+  //change the data
+  database.ref().off("value", onDataChange)
+}, 8000)
+
+setTimeout(() => {
+  //change the data
+  database.ref().update({
+    "location/ville": "Villennes"
+  })
+}, 13000)
+
 
 // database
 //   .ref()
