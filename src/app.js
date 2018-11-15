@@ -11,6 +11,8 @@ import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 import numeral from "numeral";
+import "./firebase/firebase.js";
+// import "./playground/promises.js";
 
 numeral.register("locale", "fr", {
   delimiters: {
@@ -23,7 +25,7 @@ numeral.register("locale", "fr", {
     billion: "b",
     trillion: "t"
   },
-  ordinal: function (number) {
+  ordinal: function(number) {
     return number === 1 ? "er" : "ème";
   },
   currency: {
