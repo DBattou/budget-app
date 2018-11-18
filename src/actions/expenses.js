@@ -14,13 +14,25 @@ export const startAddExpense = ({
   amount = 0,
   createdAt = 0
 } = {}) => {
-  const expense = {
-    description,
-    note,
-    amount,
-    createdAt
+  return dispatch => {
+    const expense = {
+      description,
+      note,
+      amount,
+      createdAt
+    };
+    database
+      .ref("expenses")
+      .push({ expense })
+      .then(ref => {
+        dispatch(
+          addExpense({
+            id: ref.key,
+            ...expense
+          })
+        );
+      });
   };
-  database.ref("expenses").set({ expense });
 };
 
 // REMOVE_EXPENSE
