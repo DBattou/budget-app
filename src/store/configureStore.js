@@ -11,7 +11,7 @@ const store = createStore(
     expenses: expensesReducer,
     filters: filtersReducer
   }),
-  composeEnhancers(applyMiddleware(thunk)) // <= se more on that : https://redux.js.org/api/createstore
+  composeEnhancers(applyMiddleware(thunk)) // <= see more on that : https://redux.js.org/api/createstore
 );
 
 export default store;
