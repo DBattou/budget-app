@@ -11,7 +11,7 @@ import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 import numeral from "numeral";
-import "./firebase/firebase.js";
+// import "./firebase/firebase.js";
 // import "./playground/promises.js";
 
 numeral.register("locale", "fr", {
@@ -33,6 +33,7 @@ numeral.register("locale", "fr", {
   }
 });
 
+// Init Value
 store.dispatch(
   addExpense({
     description: "Sandwich",
@@ -45,7 +46,7 @@ store.dispatch(
   addExpense({
     description: "Gaz bill",
     note: "",
-    amount: 1500,
+    amount: 15,
     createdAt: 1541199600000
   })
 );
@@ -53,7 +54,7 @@ let test = store.dispatch(
   addExpense({
     description: "Water bill",
     note: "",
-    amount: 2500,
+    amount: 25,
     createdAt: 1541113200000
   })
 );

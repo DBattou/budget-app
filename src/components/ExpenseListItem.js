@@ -7,15 +7,17 @@ numeral.locale("fr");
 
 const ExpenseListItem = props => (
   <div>
-    <Link to={`/edit/${props.id}`}>
-      <span>{props.description}</span>
-    </Link>
+    <div className="_content-container">
+      <Link to={`/edit/${props.id}`}>
+          <span>{props.description}</span>
+      </Link>
+      <span>
+        {" (" + moment(props.createdAt)
+          .locale("fr")
+          .format("Do MMMM, YYYY") +")"}
+      </span>
+    </div>
     <p>{numeral(props.amount).format("$0,0.00")}</p>
-    <p>
-      {moment(props.createdAt)
-        .locale("fr")
-        .format("Do MMMM, YYYY")}
-    </p>
   </div>
 );
 

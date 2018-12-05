@@ -10,7 +10,7 @@ const HelpPage = () => (
     </p>
     <p>
       <span>You can view the expenses list in </span>
-      <Link to={"/"}>Dashboard</Link>
+      <Link to={"/dashboard"}>Dashboard</Link>
     </p>
     <p>
       <span>You can filter the expenses by using a keyword or by choosing StartDate - EndDate</span>
@@ -21,7 +21,7 @@ const HelpPage = () => (
     </p>
     <p>
       <span>Finally you can edit/remove expense by clicking an expense in  </span>
-      <Link to={"/"}>Dashboard</Link>
+      <Link to={"/dashboard"}>Dashboard</Link>
     </p>
   </div>
 )
