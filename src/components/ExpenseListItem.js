@@ -5,20 +5,16 @@ import numeral from "numeral"
 
 numeral.locale("fr");
 
-const ExpenseListItem = props => (
-  <div>
-    <div className="_content-container">
-      <Link to={`/edit/${props.id}`}>
-          <span>{props.description}</span>
-      </Link>
-      <span>
-        {" (" + moment(props.createdAt)
-          .locale("fr")
-          .format("Do MMMM, YYYY") +")"}
-      </span>
+const ExpenseListItem = ({id, description, amount, createdAt}) => (
+  <Link className="list-item" to={`/edit/${id}`}>
+    <div>
+      <h3 className='list-item__title'>{description}</h3>
+      <span className="list-item__sub-title">{moment(createdAt).locale("fr").format("Do MMMM, YYYY")}</span>
     </div>
-    <p>{numeral(props.amount).format("$0,0.00")}</p>
-  </div>
+    <h3 className="list-item__data">
+      {numeral(amount).format("$0,0.00")}
+    </h3>    
+  </Link>
 );
 
 export default ExpenseListItem;

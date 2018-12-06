@@ -95,7 +95,7 @@ class ExpenseForm extends Component {
             value={this.state.note}
             onChange={this.handleChangeNote}
           />
-          <button>Add expense</button>
+          <button>Save expense</button>
         </form>
     );
   }
