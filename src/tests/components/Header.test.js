@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-// import ToJson from "enzyme-to-json"; => already imported in jest.config.json
+import ToJson from "enzyme-to-json"; // => already imported in jest.config.json
 import Header from "../../components/Header";
 
 test("should render header correctly", () => {
