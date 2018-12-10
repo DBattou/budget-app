@@ -62,10 +62,10 @@ class ExpenseForm extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={this.onSubmit}>
+          {this.state.error && <p className="form__error">{this.state.error}</p>}
           <input
+            className="text-input"
             type="text"
             autoFocus
             placeholder="Description"
@@ -73,6 +73,7 @@ class ExpenseForm extends Component {
             onChange={this.handleChangeDescription}
           />
           <input
+            className="text-input"
             type="text"
             placeholder="Amount"
             value={this.state.amount}
@@ -89,13 +90,13 @@ class ExpenseForm extends Component {
             }}
           />
           <textarea
+          className="textarea"
             placeholder="Add a note for your expense"
             value={this.state.note}
             onChange={this.handleChangeNote}
           />
-          <button>Add expense</button>
+          <button>Save expense</button>
         </form>
-      </div>
     );
   }
 }

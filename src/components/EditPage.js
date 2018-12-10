@@ -7,23 +7,29 @@ const EditPage = props => {
   console.log(props);
   return (
     <div>
-      <h1>Edit the expense n°</h1>
-      <p>{props.match.params.id}</p>
-      <ExpenseForm
-        expense={props.expense}
-        onSubmit={expense => {
-          props.dispatch(editExpense(props.match.params.id, expense));
-          props.history.push("/");
-        }}
-      />
-      <button
-        onClick={() => {
-          props.dispatch(removeExpense({ id: props.match.params.id }));
-          props.history.push("/");
-        }}
-      >
-        Remove
-      </button>
+      <div className="page-header">
+        <div className="content-container">
+          <h1 className="page-header__title">Edit expense</h1>
+        </div>
+      </div>
+      <div className="content-container">
+        <ExpenseForm
+          className="form"
+          expense={props.expense}
+          onSubmit={expense => {
+            props.dispatch(editExpense(props.match.params.id, expense));
+            props.history.push("/dashboard");
+          }}
+        />
+        <button
+          onClick={() => {
+            props.dispatch(removeExpense({ id: props.match.params.id }));
+            props.history.push("/dashboard");
+          }}
+        >
+          Remove
+        </button>
+      </div>
     </div>
   );
 };
